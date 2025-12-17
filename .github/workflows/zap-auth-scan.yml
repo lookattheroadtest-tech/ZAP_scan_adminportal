@@ -52,7 +52,7 @@ jobs:
 
     - name: Upload ZAP Debug Log
       uses: actions/upload-artifact@v4
-      if: always()          # ← CORRECT SYNTAX
+      if: always()
       with:
         name: zap-debug-log
         path: zap-debug.log
