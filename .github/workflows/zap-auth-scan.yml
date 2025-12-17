@@ -8,21 +8,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Run ZAP Full Scan (Authenticated)
         run: |
           docker run --rm \
+            -u root \
             -v $(pwd):/zap/wrk:rw \
             ghcr.io/zaproxy/zaproxy:stable \
             zap-full-scan.py \
               -t https://valuelabs-admin.adhoc.stabilthus.io \
-              -c gen.conf \
+              -n gen.conf \
+              -j \
               -r zap-report.html \
               -d
 
-      - name: Upload ZAP Report
+      - name: Upload ZAP HTML Report
         uses: actions/upload-artifact@v4
         with:
           name: zap-report
