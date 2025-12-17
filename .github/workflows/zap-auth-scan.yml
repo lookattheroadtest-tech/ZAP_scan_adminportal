@@ -19,7 +19,7 @@ jobs:
             ghcr.io/zaproxy/zaproxy:stable \
             zap-full-scan.py \
               -t https://valuelabs-admin.adhoc.stabilthus.io \
-              -n gen.conf \
+              -n gen.context \
               -j \
               -r zap-report.html \
               -d
